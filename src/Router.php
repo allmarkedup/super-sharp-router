@@ -1,12 +1,13 @@
 <?php namespace Clearleft\SuperSharp;
 
+use Clearleft\SuperSharp\Route;
+use Clearleft\SuperSharp\Match;
+use Clearleft\SuperSharp\Http\Request;
+use Clearleft\SuperSharp\Handlers\HandlerInterface;
+use Clearleft\SuperSharp\Handlers\CallableHandler;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
-use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
-
-use Clearleft\SuperSharp\Route;
-use Clearleft\SuperSharp\Http\Request;
 
 class Router
 {
@@ -14,97 +15,65 @@ class Router
 
     protected $defaultRoute;
 
-    public function __construct()
+    protected $handler;
+
+    protected $context;
+
+    public function __construct(HandlerInterface $handler = null)
     {
         $this->routes = [];
         $this->defaultRoute = new Route();
+        $this->context = new RequestContext();
+        $this->context->fromRequest(Request::createFromGlobals());
+        $this->handler = $handler ?: new CallableHandler();
     }
 
     public function match($urlOrRequest = null)
     {
-        $urlOrRequest = $urlOrRequest ?: Request::createFromGlobals();
-        $routes = $this->getRoutes();
-        $context = new RequestContext();
-        $context->fromRequest(Request::createFromGlobals());
-        $matcher = new UrlMatcher($routes, $context);
-        
-        $matchType = ($urlOrRequest instanceof SymfonyRequest) ? 'addRequest' : 'match';
-
-        return $matcher->{$matchType}($urlOrRequest);
+        $request = $this->makeRequest($urlOrRequest);
+        $matcher = new UrlMatcher($this->getRoutes(), $this->context);
+        $params = $matcher->matchRequest($request);
+        return $this->handler->handle($params, $request);
     }
 
-    public function add($pattern, $to = null)
+    public function add($pattern, $args = null)
     {
         $route = clone $this->defaultRoute;
         $route->setPath($pattern);
-        $route->setDefault('_controller', $to ?: null);
+        $route->setDefault('_args', $args);
         $this->routes[] = $route;
         return $route;
     }
 
-        /**
-     * Maps a GET request to a callable.
-     *
-     * @param string $pattern added route pattern
-     * @param mixed  $to      Callback that returns the response when added
-     *
-     * @return Controller
-     */
-    public function get($pattern, $to = null)
+    public function get($pattern, $args = null)
     {
-        return $this->add($pattern, $to)->method('GET');
+        return $this->add($pattern, $args)->method('GET');
     }
 
-    /**
-     * Maps a POST request to a callable.
-     *
-     * @param string $pattern added route pattern
-     * @param mixed  $to      Callback that returns the response when added
-     *
-     * @return Controller
-     */
-    public function post($pattern, $to = null)
+    public function post($pattern, $args = null)
     {
-        return $this->add($pattern, $to)->method('POST');
+        return $this->add($pattern, $args)->method('POST');
     }
 
-    /**
-     * Maps a PUT request to a callable.
-     *
-     * @param string $pattern added route pattern
-     * @param mixed  $to      Callback that returns the response when added
-     *
-     * @return Controller
-     */
-    public function put($pattern, $to = null)
+    public function put($pattern, $args = null)
     {
-        return $this->add($pattern, $to)->method('PUT');
+        return $this->add($pattern, $args)->method('PUT');
     }
 
-    /**
-     * Maps a DELETE request to a callable.
-     *
-     * @param string $pattern added route pattern
-     * @param mixed  $to      Callback that returns the response when added
-     *
-     * @return Controller
-     */
-    public function delete($pattern, $to = null)
+    public function delete($pattern, $args = null)
     {
-        return $this->add($pattern, $to)->method('DELETE');
+        return $this->add($pattern, $args)->method('DELETE');
     }
 
-    /**
-     * Maps a PATCH request to a callable.
-     *
-     * @param string $pattern added route pattern
-     * @param mixed  $to      Callback that returns the response when added
-     *
-     * @return Controller
-     */
-    public function patch($pattern, $to = null)
+    public function patch($pattern, $args = null)
     {
-        return $this->add($pattern, $to)->method('PATCH');
+        return $this->add($pattern, $args)->method('PATCH');
+    }
+
+    protected function makeRequest($urlOrRequest)
+    {
+        $urlOrRequest = $urlOrRequest ?: Request::createFromGlobals();
+        return ($urlOrRequest instanceof Request) ? $urlOrRequest : Request::create($urlOrRequest);
     }
 
     protected function getRoutes()
