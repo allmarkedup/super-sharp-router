@@ -1,7 +1,7 @@
-<?php namespace Clearleft\SuperSharp\Handlers;
+<?php namespace Clearleft\SuperSharp\Handler;
 
 use Clearleft\SuperSharp\Http\Request;
-use Clearleft\SuperSharp\Handlers\HandlerInterface;
+use Clearleft\SuperSharp\Handler\HandlerInterface;
 
 class PassthruHandler implements HandlerInterface
 {

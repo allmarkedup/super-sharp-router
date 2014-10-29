@@ -1,4 +1,4 @@
-<?php namespace Clearleft\SuperSharp\Handlers;
+<?php namespace Clearleft\SuperSharp\Handler;
 
 use Clearleft\SuperSharp\Http\Request;
 

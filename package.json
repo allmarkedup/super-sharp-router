@@ -1,13 +1,13 @@
 {
-  "name": "super-sharp",
+  "name": "super-sharp-router",
   "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:clearleft/super-sharp.git"
+    "url": "git@github.com:clearleft/super-sharp-router.git"
   },
   "author": "Mark Perkins <mark@clearleft.com>",
   "bugs": {
-    "url": "https://github.com/clearleft/super-sharp/issues"
+    "url": "https://github.com/clearleft/super-sharp-router/issues"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

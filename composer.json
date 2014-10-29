@@ -1,6 +1,6 @@
 {
-    "name": "clearleft/super-sharp",
-    "description": "A simple PHP router.",
+    "name": "clearleft/super-sharp-router",
+    "description": "A simple PHP routing library built on top of Symfony components.",
     "license": "MIT",
     "authors": [
         {

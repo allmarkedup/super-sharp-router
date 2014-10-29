@@ -3,8 +3,8 @@
 use Clearleft\SuperSharp\Route;
 use Clearleft\SuperSharp\Match;
 use Clearleft\SuperSharp\Http\Request;
-use Clearleft\SuperSharp\Handlers\HandlerInterface;
-use Clearleft\SuperSharp\Handlers\CallableHandler;
+use Clearleft\SuperSharp\Handler\HandlerInterface;
+use Clearleft\SuperSharp\Handler\CallableHandler;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;
@@ -36,38 +36,39 @@ class Router
         return $this->handler->handle($params, $request);
     }
 
-    public function add($pattern, $args = null)
+    public function add($pattern, $controller = null, array $args = [])
     {
         $route = clone $this->defaultRoute;
         $route->setPath($pattern);
+        $route->setDefault('_controller', $controller);
         $route->setDefault('_args', $args);
         $this->routes[] = $route;
         return $route;
     }
 
-    public function get($pattern, $args = null)
+    public function get($pattern, $controller = null, array $args = null)
     {
-        return $this->add($pattern, $args)->method('GET');
+        return $this->add($pattern, $controller , $args)->method('GET');
     }
 
-    public function post($pattern, $args = null)
+    public function post($pattern, $controller = null, array $args = null)
     {
-        return $this->add($pattern, $args)->method('POST');
+        return $this->add($pattern, $controller , $args)->method('POST');
     }
 
-    public function put($pattern, $args = null)
+    public function put($pattern, $controller = null, array $args = null)
     {
-        return $this->add($pattern, $args)->method('PUT');
+        return $this->add($pattern, $controller , $args)->method('PUT');
     }
 
-    public function delete($pattern, $args = null)
+    public function delete($pattern, $controller = null, array $args = null)
     {
-        return $this->add($pattern, $args)->method('DELETE');
+        return $this->add($pattern, $controller , $args)->method('DELETE');
     }
 
-    public function patch($pattern, $args = null)
+    public function patch($pattern, $controller = null, array $args = null)
     {
-        return $this->add($pattern, $args)->method('PATCH');
+        return $this->add($pattern, $controller , $args)->method('PATCH');
     }
 
     protected function makeRequest($urlOrRequest)
