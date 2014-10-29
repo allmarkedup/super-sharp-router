@@ -36,8 +36,9 @@ class Router
         return $this->handler->handle($params, $request);
     }
 
-    public function add($pattern, $controller = null, array $args = [])
+    public function add($pattern, $controller = null, array $args = null)
     {
+        $args = $args ?: [];
         $route = clone $this->defaultRoute;
         $route->setPath($pattern);
         $route->setDefault('_controller', $controller);
