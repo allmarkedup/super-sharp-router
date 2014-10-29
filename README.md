@@ -18,16 +18,34 @@ $ composer require clearleft/super-sharp-router
 The _hello world_ example:
 
 ```php
-<?php
-
-require_once __DIR__ . '/vendor/autoload.php';
 
 $router = new Clearleft\SuperSharp\Router();
 
-$router->get('/foo', function(){
+$router->get('/hello', function(){
     return 'Hello world!';
 });
 
-echo $router->match('/foo'); // Prints: Hello World!
+echo $router->match('/hello'); // Prints: Hello World!
+
+```
+
+Matching against the current request and returning a response object:
+
+```php
+
+use Clearleft\SuperSharp\Http\Response;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
+
+$router = new Clearleft\SuperSharp\Router();
+$router->get('/', function(){
+    return new Response('This is the homepage');
+});
+
+try {
+    $response = $router->match(); // matches against the current request
+    $response->send();    
+} catch (RouteNotFoundException $e) {
+    echo 'No route found';
+}
 
 ```
