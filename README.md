@@ -3,7 +3,10 @@ Super Sharp Router
 
 A simple, elegant routing library for PHP 5.4+.
 
-Inspired by (and largely extracted from) the [Silex](http://silex.sensiolabs.org) routing style and built on [Symfony components](http://symfony.com/doc/current/components/index.html).
+Inspired by (and largely extracted from) [Silex](http://silex.sensiolabs.org) routing and built on [Symfony components](http://symfony.com/doc/current/components/index.html).
+
+- [Installation](#installation)
+- [Examples](#examples)
 
 ## Installation
 
@@ -19,7 +22,6 @@ The _hello world_ example:
 
 ```php
 <?php
-
 $router = new Clearleft\SuperSharp\Router();
 
 $router->get('/hello', function(){
@@ -27,14 +29,12 @@ $router->get('/hello', function(){
 });
 
 echo $router->match('/hello'); // Prints: Hello World!
-
 ```
 
 Matching against the current request and returning a response object:
 
 ```php
 <?php
-
 use Clearleft\SuperSharp\Http\Response;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
@@ -50,7 +50,25 @@ try {
 }
 
 $response->send();
+```
 
+HTTP-verb based methods, dynamic route parameters and fluent route configuration:
+
+```php
+<?php
+
+$router->post('/articles', function(){
+    return 'Article added!';
+});
+
+$router->get('/articles/{slug}', function($slug){
+    // ...
+    return Example::find($slug);
+});
+
+$router->get('/users/{id}', function($id){
+    return Example::find($id);
+})->assert('id', '\d')->requireHttps();
 ```
 
 ## Running tests
@@ -61,4 +79,4 @@ Tests can be run using PHP Unit from the command line:
 $ vendor/bin/phpunit
 ```
 
-The project also includes a [Grunt](http://gruntjs.com) watch task to run the PHP Unit tests when files are updated which you can use for convenience.
+The project also includes a [Grunt](http://gruntjs.com) watch task to run the PHP Unit tests when files are updated which you can use for your convenience.
