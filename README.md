@@ -3,7 +3,7 @@ Super Sharp Router
 
 A simple, elegant routing library for PHP 5.4+.
 
-Inspired by the [Silex](http://silex.sensiolabs.org) routing style and built on [Symfony components](http://symfony.com/doc/current/components/index.html).
+Inspired by (and largely extracted from) the [Silex](http://silex.sensiolabs.org) routing style and built on [Symfony components](http://symfony.com/doc/current/components/index.html).
 
 ## Installation
 

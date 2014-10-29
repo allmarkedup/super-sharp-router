@@ -63,7 +63,7 @@ class Route extends SymfonyRoute
         $requirements = $this->getRequirements();
         $method = isset($requirements['_method']) ? $requirements['_method'] : '';
         
-        $routeName = $prefix.$method.$this->getPath();
+        $routeName = $method.$this->getPath();
         $routeName = str_replace(array('/', ':', '|', '-'), '_', $routeName);
         $routeName = preg_replace('/[^a-z0-9A-Z_.]+/', '', $routeName);
 

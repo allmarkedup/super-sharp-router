@@ -11,7 +11,7 @@
          bootstrap="vendor/autoload.php"
 >
     <testsuites>
-        <testsuite name="Super Sharp Tests">
+        <testsuite name="Super Sharp Router Tests">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
