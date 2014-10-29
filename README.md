@@ -18,6 +18,7 @@ $ composer require clearleft/super-sharp-router
 The _hello world_ example:
 
 ```php
+<?php
 
 $router = new Clearleft\SuperSharp\Router();
 
@@ -32,6 +33,7 @@ echo $router->match('/hello'); // Prints: Hello World!
 Matching against the current request and returning a response object:
 
 ```php
+<?php
 
 use Clearleft\SuperSharp\Http\Response;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
@@ -43,9 +45,10 @@ $router->get('/', function(){
 
 try {
     $response = $router->match(); // matches against the current request
-    $response->send();    
 } catch (RouteNotFoundException $e) {
-    echo 'No route found';
+    $response = new Response('No matching route found', 404);
 }
+
+$response->send();
 
 ```
