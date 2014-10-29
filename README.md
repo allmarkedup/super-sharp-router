@@ -62,13 +62,14 @@ $router->post('/articles', function(){
 });
 
 $router->get('/articles/{slug}', function($slug){
-    // ...
     return Example::find($slug);
 });
 
 $router->get('/users/{id}', function($id){
     return Example::find($id);
-})->assert('id', '\d')->requireHttps();
+})
+->assert('id', '\d') // $id route parameter must be a digit
+->requireHttps();    // Must be HTTPS
 ```
 
 ## Running tests
