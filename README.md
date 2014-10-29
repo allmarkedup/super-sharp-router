@@ -52,3 +52,13 @@ try {
 $response->send();
 
 ```
+
+## Running tests
+
+Tests can be run using PHP Unit from the command line:
+
+```bash
+$ vendor/bin/phpunit
+```
+
+The project also includes a [Grunt](http://gruntjs.com) watch task to run the PHP Unit tests when files are updated which you can use for convenience.
