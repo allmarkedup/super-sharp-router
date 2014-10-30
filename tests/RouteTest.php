@@ -1,10 +1,10 @@
-<?php namespace Clearleft\SuperSharp\Tests;
+<?php namespace Amu\SuperSharp\Tests;
 
-use Clearleft\SuperSharp\Router;
-use Clearleft\SuperSharp\Route;
+use Amu\SuperSharp\Router;
+use Amu\SuperSharp\Route;
 
 /**
- * @author Mark Perkins <mark@clearleft.com>
+ * @author Mark Perkins <mark@Amu.com>
  */
 class RouteTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,3 +1,3 @@
-<?php namespace Clearleft\SuperSharp\Exception;
+<?php namespace Amu\SuperSharp\Exception;
 
 class Exception extends \Exception {}

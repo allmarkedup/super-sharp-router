@@ -1,6 +1,6 @@
-<?php namespace Clearleft\SuperSharp\Handler;
+<?php namespace Amu\SuperSharp\Handler;
 
-use Clearleft\SuperSharp\Http\Request;
+use Amu\SuperSharp\Http\Request;
 
 interface HandlerInterface
 {

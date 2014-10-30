@@ -1,14 +1,14 @@
-<?php namespace Clearleft\SuperSharp\Tests;
+<?php namespace Amu\SuperSharp\Tests;
 
 use Mockery;
-use Clearleft\SuperSharp\Router;
-use Clearleft\SuperSharp\Route;
-use Clearleft\SuperSharp\Http\Request;
-use Clearleft\SuperSharp\Handler\HandlerInterface;
-use Clearleft\SuperSharp\Handler\PassthruHandler;
+use Amu\SuperSharp\Router;
+use Amu\SuperSharp\Route;
+use Amu\SuperSharp\Http\Request;
+use Amu\SuperSharp\Handler\HandlerInterface;
+use Amu\SuperSharp\Handler\PassthruHandler;
 
 /**
- * @author Mark Perkins <mark@clearleft.com>
+ * @author Mark Perkins <mark@Amu.com>
  */
 class RouterTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,29 +22,29 @@ class RouterTest extends \PHPUnit_Framework_TestCase
         $router = new Router();
 
         $val = $router->add('/foo', function(){});
-        $this->assertInstanceOf('Clearleft\SuperSharp\Route', $val);
+        $this->assertInstanceOf('Amu\SuperSharp\Route', $val);
 
         $val = $router->get('/foo', function(){});
-        $this->assertInstanceOf('Clearleft\SuperSharp\Route', $val);
+        $this->assertInstanceOf('Amu\SuperSharp\Route', $val);
 
         $val = $router->post('/foo', function(){});
-        $this->assertInstanceOf('Clearleft\SuperSharp\Route', $val);
+        $this->assertInstanceOf('Amu\SuperSharp\Route', $val);
 
         $val = $router->put('/foo', function(){});
-        $this->assertInstanceOf('Clearleft\SuperSharp\Route', $val);
+        $this->assertInstanceOf('Amu\SuperSharp\Route', $val);
 
         $val = $router->patch('/foo', function(){});
-        $this->assertInstanceOf('Clearleft\SuperSharp\Route', $val);
+        $this->assertInstanceOf('Amu\SuperSharp\Route', $val);
 
         $val = $router->delete('/foo', function(){});
-        $this->assertInstanceOf('Clearleft\SuperSharp\Route', $val);
+        $this->assertInstanceOf('Amu\SuperSharp\Route', $val);
     }
 
     public function testHandlerCalled()
     {
         $params = ['foo' => 'bar'];
         $request = new Request();
-        $handler = Mockery::mock('Clearleft\SuperSharp\Handler\PassthruHandler');
+        $handler = Mockery::mock('Amu\SuperSharp\Handler\PassthruHandler');
         $handler->shouldReceive('handle')->once()->andReturn($params);
 
         $router = new Router($handler);

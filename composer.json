@@ -1,11 +1,11 @@
 {
-    "name": "clearleft/super-sharp-router",
-    "description": "A simple, elegant routing library for PHP 5.4+",
+    "name": "allmarkedup/super-sharp-router",
+    "description": "A sharp little routing library for PHP 5.4+",
     "license": "MIT",
     "authors": [
         {
             "name": "Mark Perkins",
-            "email": "mark@clearleft.com"
+            "email": "mark@allmarkedup.com"
         }
     ],
     "require": {
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Clearleft\\SuperSharp\\": "src/"
+            "Amu\\SuperSharp\\": "src/"
         }
     }
 }

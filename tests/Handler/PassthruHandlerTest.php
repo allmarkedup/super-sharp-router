@@ -1,10 +1,10 @@
-<?php namespace Clearleft\SuperSharp\Tests\Handler;
+<?php namespace Amu\SuperSharp\Tests\Handler;
 
-use Clearleft\SuperSharp\Handler\PassthruHandler;
-use Clearleft\SuperSharp\Http\Request;
+use Amu\SuperSharp\Handler\PassthruHandler;
+use Amu\SuperSharp\Http\Request;
 
 /**
- * @author Mark Perkins <mark@clearleft.com>
+ * @author Mark Perkins <mark@Amu.com>
  */
 class PassthruHandlerTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,10 +1,10 @@
-<?php namespace Clearleft\SuperSharp;
+<?php namespace Amu\SuperSharp;
 
-use Clearleft\SuperSharp\Route;
-use Clearleft\SuperSharp\Match;
-use Clearleft\SuperSharp\Http\Request;
-use Clearleft\SuperSharp\Handler\HandlerInterface;
-use Clearleft\SuperSharp\Handler\CallableHandler;
+use Amu\SuperSharp\Route;
+use Amu\SuperSharp\Match;
+use Amu\SuperSharp\Http\Request;
+use Amu\SuperSharp\Handler\HandlerInterface;
+use Amu\SuperSharp\Handler\CallableHandler;
 use Symfony\Component\Routing\Matcher\UrlMatcher;
 use Symfony\Component\Routing\RequestContext;
 use Symfony\Component\Routing\RouteCollection;

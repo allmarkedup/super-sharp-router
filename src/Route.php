@@ -1,4 +1,4 @@
-<?php namespace Clearleft\SuperSharp;
+<?php namespace Amu\SuperSharp;
 
 use Symfony\Component\Routing\Route as SymfonyRoute;
 

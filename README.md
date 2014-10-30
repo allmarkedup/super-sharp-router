@@ -13,7 +13,7 @@ Inspired by (and largely extracted from) [Silex](http://silex.sensiolabs.org) ro
 Using [Composer](https://getcomposer.org/):
 
 ```bash
-$ composer require clearleft/super-sharp-router
+$ composer require Amu/super-sharp-router
 ```
 
 ## Examples
@@ -22,7 +22,7 @@ The _hello world_ example:
 
 ```php
 <?php
-$router = new Clearleft\SuperSharp\Router();
+$router = new Amu\SuperSharp\Router();
 
 $router->get('/hello', function(){
     return 'Hello world!';
@@ -35,10 +35,10 @@ Matching against the current request and returning a response object:
 
 ```php
 <?php
-use Clearleft\SuperSharp\Http\Response;
+use Amu\SuperSharp\Http\Response;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
-$router = new Clearleft\SuperSharp\Router();
+$router = new Amu\SuperSharp\Router();
 $router->get('/', function(){
     return new Response('This is the homepage');
 });

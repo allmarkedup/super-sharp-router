@@ -1,4 +1,4 @@
-<?php namespace Clearleft\SuperSharp\Http;
+<?php namespace Amu\SuperSharp\Http;
 
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 

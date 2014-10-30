@@ -1,11 +1,11 @@
-<?php namespace Clearleft\SuperSharp\Handler;
+<?php namespace Amu\SuperSharp\Handler;
 
 use Symfony\Component\HttpKernel;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver;
 
-use Clearleft\SuperSharp\Exception\Exception;
-use Clearleft\SuperSharp\Http\Request;
-use Clearleft\SuperSharp\Handler\HandlerInterface;
+use Amu\SuperSharp\Exception\Exception;
+use Amu\SuperSharp\Http\Request;
+use Amu\SuperSharp\Handler\HandlerInterface;
 
 class CallableHandler implements HandlerInterface
 {
