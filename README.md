@@ -13,7 +13,7 @@ Inspired by (and largely extracted from) [Silex](http://silex.sensiolabs.org) ro
 Using [Composer](https://getcomposer.org/):
 
 ```bash
-$ composer require Amu/super-sharp-router
+$ composer require allmarkedup/super-sharp-router
 ```
 
 ## Examples
