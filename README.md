@@ -45,7 +45,7 @@ $router->get('/', function(){
 
 try {
     $response = $router->match(); // matches against the current request
-} catch (RouteNotFoundException $e) {
+} catch (ResourceNotFoundException $e) {
     $response = new Response('No matching route found', 404);
 }
 
